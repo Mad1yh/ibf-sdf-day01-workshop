@@ -15,6 +15,8 @@ public class App {
 
 
         while(!input.equals("quit")){
+            input = cons.readLine(">");
+            input = input.toLowerCase();
 
             if (input.equals("list")){
                 if (cartItems.size() >0) {
@@ -40,20 +42,14 @@ public class App {
             }
             if(input.startsWith("delete")){
                 Scanner scan = new Scanner(input.substring(6));
-                //int deleteinput = scan.nextInt();
-                 //if (deleteinput > cartItems.size()) {
-                //     System.out.println("No item found.");
-
-                //  } else if (deleteinput <= cartItems.size()) {
-                //     cartItems.remove(deleteinput);
-                //  }
+                
                 String stringVal = "";
 
                 while (scan.hasNext()) {
 
                 stringVal = scan.next();
 
-                Integer cartPosition = Integer.parseInt(stringVal);
+                int cartPosition = Integer.parseInt(stringVal);
                 cartPosition = cartPosition -1;
 
                 if (cartPosition < cartItems.size()) {
@@ -67,3 +63,12 @@ public class App {
         }System.out.println("Bye! Bye! See you again...");
     }
 }
+
+//1.compiling
+//javac --source-path src -d bin src/*
+//2. running
+//java -cp bin App
+//3.Packing
+//jar -c -v -f day01.jar -e App .
+//4. Run the packaged jar file
+//java -cp day01.jar App
